@@ -45,6 +45,19 @@ Paste the following code to install the razor imu package in your catkin_ws.
 
 This will launch the whole series of nodes.
 
+#Making it wireless
+
+If you want the boat to be wireless from your computer and still get all the data from the arduino to your computer, you either need a bluetooth serial communication to your computer or you need the arduino attached to a Raspberry Pi, and have your computer and the Raspberry Pi run ROS on the same network.  All the visualisation software will be run on the computer, but the Raspberry Pi will run:
+1. Upload the arduino code to the arduino and have all the arduino libraries. 
+2. Must have the modified razor_imu_9dof and run the imu_node.py code with this code:
+	$ rosrun razor_imu_9dof imu_node.py
+
+You can then comment out the line in the master.sh file that runs the razor_imu_9dof node on your computer.  
+
+Make sure your network is configured correctly to use ROS over wifi.  Follow these links to make sure it is:
+http://wiki.ros.org/ROS/Tutorials/MultipleMachines
+http://wiki.ros.org/ROS/NetworkSetup
+
 Please feel free to contact me at seamusbjohnston@gmail.com or post anything in the issues tab.
 
 Thanks!
