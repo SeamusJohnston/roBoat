@@ -1,0 +1,34 @@
+#include "ros/ros.h"
+#include "geometry_msgs/Twist.h"
+
+class SubscribeAndPublish 
+{
+	public:
+	SubscribeAndPublish()
+	{
+		//Publications
+		//controllers for rotating motor and spinning prop
+		
+		
+		//Subscriptions
+		sub_= n_.subscribe("/movement", 1000, &SubscribeAndPublish::callback, this);
+	}
+	
+	void callback(const geometry_msgs::Twist& test)
+	{
+		//std_msgs::Float64 to effort and position controllers
+		
+	}
+	private:
+	ros::NodeHandle n_;
+	ros::Subscriber sub_;
+};
+
+int main(int argc, char **argv)
+{
+	ros::init(argc, argv, "remap");
+	SubscribeAndPublish object;
+	ros::spin();
+	
+	return 0;
+}

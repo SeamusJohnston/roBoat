@@ -1,0 +1,29 @@
+boat:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 1439 
+  # Effort Controllers ---------------------------------------
+  # Position Controllers ---------------------------------------
+  prop_housing_controller:
+    type: position_controllers/JointPositionController
+    joint: prop_joint
+    pid: {p: 2, i: 0.01, d: 0.5}
+  servo_controller:
+    type: position_controllers/JointPositionController
+    joint: servo_joint
+    pid: {p: 2, i: 0.01, d: 0.5}
+  motor_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: motor_joint
+    pid: {p: 2, i: 0.01, d: 0.5}  
+  prop_shaft_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: prop_shaft_joint
+    pid: {p: 2, i: 0.01, d: 0.5}
+  prop_piece_controller:
+    type: velocity_controllers/JointVelocityController
+    joint: prop_piece_joint
+    pid: {p: 2, i: 0.01, d: 0.5}
+  
+  

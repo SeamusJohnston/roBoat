@@ -1,0 +1,297 @@
+<?xml version="1.0"?>
+<robot name="boat" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<gazebo>
+
+<plugin name="ros_control" filename="libgazebo_ros_control.so">
+
+<robotNamespace>/boat</robotNamespace>
+<robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+</plugin>
+</gazebo>
+<xacro:property name="PI" value="3.14159265359" />
+
+<link name="base_footprint">
+  <visual>
+    <origin xyz="0 0 2" rpy="${PI/2} 0 ${PI/2}" />
+    <geometry>
+     <mesh filename="package://boat/meshes/BoatHull.STL" scale="0.01 0.01 0.01"/>
+    </geometry>
+    <material name="red">
+      <color rgba="1 0.5 0.5 1"/>
+    </material>
+ </visual>
+    <collision>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://boat/meshes/BoatHull.STL" scale="0.001 0.001 0.001"/>
+    </geometry>
+    </collision>
+    <inertial>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="1"/>
+<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+</inertial>
+ </link>
+<joint name="hull_joint" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="hull"/>
+    <origin xyz="-1.65 -0.88 1.125"/>
+  </joint>
+
+<link name="hull">
+  <visual>
+    <origin xyz="0 0 0" rpy="${PI/2} 0 ${PI/2}" />
+    <geometry>
+     <mesh filename="package://boat/meshes/hullstl.STL" scale="0.01 0.01 0.01"/>
+    </geometry>
+    <material name="red">
+      <color rgba="1 0.5 0.5 1"/>
+    </material>
+ </visual>
+    <collision>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://boat/meshes/hullstl.STL" scale="0.001 0.001 0.001"/>
+    </geometry>
+    </collision>
+    <inertial>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="1"/>
+<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+</inertial>
+ </link>
+
+<joint name="prop_joint" type="revolute">
+    <parent link="base_footprint"/>
+    <child link="prop_link"/>
+    <axis xyz="0 0 1"/>
+    <origin xyz="-2.05 0 1.77"/>
+   <limit effort="30" velocity="1.0" lower="-32000" upper="32000" />
+    <dynamics damping="0.1" friction="0.1" />
+  </joint>
+<link name="prop_link">
+  <visual>
+    <origin xyz="0 0 0" rpy="${PI/2} 0 ${3*PI/2}" />
+    <geometry>
+     <mesh filename="package://boat/meshes/PropHousingCase1.STL" scale="0.01 0.01 0.01"/>
+    </geometry>
+    <material name="red">
+      <color rgba="1 0.5 0.5 1"/>
+    </material>
+ </visual>
+    <collision>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://boat/meshes/PropHousingCase1.STL" scale="0.001 0.001 0.001"/>
+    </geometry>
+    </collision>
+    <inertial>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="1"/>
+<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+</inertial>
+ </link>
+
+<link name="servo_link">
+  <visual>
+    <origin xyz="1.43 0 0" rpy="${PI/2} 0 ${PI/2}" />
+    <geometry>
+     <mesh filename="package://boat/meshes/Servo Turning.STL" scale="0.01 0.01 0.01"/>
+    </geometry>
+    <material name="red">
+      <color rgba="1 0.5 0.5 1"/>
+    </material>
+ </visual>
+    <collision>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://boat/meshes/Servo Turning.STL" scale="0.001 0.001 0.001"/>
+    </geometry>
+    </collision>
+    <inertial>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="1"/><inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+</inertial>
+ </link>
+
+<joint name="servo_joint" type="revolute">
+    <parent link="base_footprint"/>
+    <child link="servo_link"/>
+<axis xyz="0 0 1"/>
+    <origin xyz="-1.43 0 2"/>
+   <limit effort="30" velocity="1.0" lower="-32000" upper="32000" />
+    <dynamics damping="0.1" friction="0.1" />
+  </joint>
+
+<link name="motor_gear">
+  <visual>
+    <origin xyz="0 -0.14 -0.14" rpy="0 0 ${PI/2}" />
+    <geometry>
+     <mesh filename="package://boat/meshes/7297K180.STL" scale="0.01 0.01 0.01"/>
+    </geometry>
+    <material name="red">
+      <color rgba="1 0.5 0.5 1"/>
+    </material>
+ </visual>
+    <collision>
+    <origin xyz="0 0 0" rpy="0 0 ${PI}" />
+     <geometry>
+       <mesh filename="package://boat/meshes/7297K180.STL" scale="0.001 0.001 0.001"/>
+    </geometry>
+    </collision>
+    <inertial>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="1"/>
+<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+</inertial>
+ </link>
+
+<joint name="motor_joint" type="continuous">
+    <parent link="base_footprint"/>
+    <child link="motor_gear"/>
+<axis xyz="1 0 0"/>
+    <origin xyz="-1.8 0 2.32"/>
+   <limit effort="30" velocity="30.0"/>
+    <dynamics damping="0.1" friction="0.1" />
+  </joint>
+
+<link name="prop_shaft">
+  <visual>
+    <origin xyz="2.04 0.205 0" rpy="${PI/2} 0 ${PI/2+0.1}" />
+    <geometry>
+     <mesh filename="package://boat/meshes/Shaft.STL" scale="0.01 0.01 0.01"/>
+    </geometry>
+    <material name="red">
+      <color rgba="1 0.5 0.5 1"/>
+    </material>
+ </visual>
+    <collision>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://boat/meshes/Shaft.STL" scale="0.001 0.001 0.001"/>
+    </geometry>
+    </collision>
+    <inertial>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="1"/>
+<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+</inertial>
+ </link>
+
+<joint name="prop_shaft_joint" type="continuous">
+    <parent link="prop_link"/>
+    <child link="prop_shaft"/>
+<axis xyz="0 0 1"/>
+    <origin xyz="0 0 0.2"/>
+   <limit effort="30" velocity="30.0"/>
+    <dynamics damping="0.1" friction="0.1" />
+  </joint>
+
+<link name="prop_piece">
+  <visual>
+    <origin xyz="2.04 0.195 1.155" rpy="${PI/2} 0 ${PI/2+0.1}" />
+    <geometry>
+     <mesh filename="package://boat/meshes/PropPiece.STL" scale="0.01 0.01 0.01"/>
+    </geometry>
+    <material name="red">
+      <color rgba="1 0.5 0.5 1"/>
+    </material>
+ </visual>
+    <collision>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+     <geometry>
+       <mesh filename="package://boat/meshes/PropPiece.STL" scale="0.001 0.001 0.001"/>
+    </geometry>
+    </collision>
+    <inertial>
+    <origin xyz="0 0 0" rpy="0 0 0" />
+      <mass value="1"/>
+<inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+</inertial>
+ </link>
+
+<joint name="prop_piece_joint" type="continuous">
+    <parent link="prop_link"/>
+    <child link="prop_piece"/>
+<axis xyz="1 0 0"/>
+    <origin xyz="0 0 -0.92"/>
+   <limit effort="30" velocity="30.0"/>
+    <dynamics damping="0.1" friction="0.1" />
+  </joint>
+
+<transmission name="servo_rotation">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="servo_joint">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="servo_actuator">
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="prop_housing_rotation">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="prop_joint">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="prop_housing_actuator">
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="prop_shaft_rotation">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="prop_shaft_joint">
+    <hardwareInterface>VelocityJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="prop_shaft_actuator">
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<transmission name="motor_rotation">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="motor_joint">
+    <hardwareInterface>VelocityJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="motor_actuator">
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+
+<transmission name="prop_piece_rotation">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="prop_piece_joint">
+    <hardwareInterface>VelocityJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="prop_piece_actuator">
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<gazebo reference="base_footprint">
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+
+<gazebo reference="servo_link">>
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+
+<gazebo reference="prop_link">
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+
+<gazebo reference="motor_gear">
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+
+<gazebo reference="prop_shaft">
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+
+<gazebo reference="prop_piece">
+    <turnGravityOff>true</turnGravityOff>
+  </gazebo>
+
+</robot>

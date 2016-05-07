@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam command="load" file="$(find boat)/config/boat_control.yaml"/>
+
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+	output="screen" ns="/boat" args=" joint_state_controller 
+prop_housing_controller 
+servo_controller
+motor_controller 
+prop_shaft_controller 
+prop_piece_controller"/>
+
+  <!-- convert joint states to TF transforms for rviz, etc -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+	respawn="false" output="screen">
+	<remap from="/joint_states" to="/boat/joint_states" />
+  </node>
+<param name="robot_description"
+	 command="$(find xacro)/xacro.py '$(find boat)/urdf/boat.urdf.xacro'" />
+
+</launch>
