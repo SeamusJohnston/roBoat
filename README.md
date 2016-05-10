@@ -61,6 +61,6 @@ Make sure your network is configured correctly to use ROS over wifi.  Follow the
 http://wiki.ros.org/ROS/Tutorials/MultipleMachines
 http://wiki.ros.org/ROS/NetworkSetup
 
-Please feel free to contact me at seamusbjohnston@gmail.com or post anything in the issues tab.  There are also videos of it working on my website, seamusbjohnston.com.
+Please feel free to contact me at seamusbjohnston@gmail.com or post anything in the issues tab.  There are also videos of it working on my website, http://seamusbjohnston.com.
 
 Thanks!
