@@ -1,7 +1,7 @@
 <launch>
       <arg name="boat" />
       <arg name="gui" default="true" />
-<arg name="rvizconfig" default="$(find boat)/launch/boat.rviz" />
+<arg name="rvizconfig" default="$(find boat)/config/boat.rviz" />
      
  <param name="robot_description" command="$(find xacro)/xacro.py '$(find boat)/urdf/boat.urdf.xacro'" />
    

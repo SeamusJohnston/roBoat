@@ -21,9 +21,9 @@
     </material>
  </visual>
     <collision>
-    <origin xyz="0 0 0" rpy="0 0 0" />
-     <geometry>
-       <mesh filename="package://boat/meshes/BoatHull.STL" scale="0.001 0.001 0.001"/>
+    <origin xyz="0 0 2" rpy="${PI/2} 0 ${PI/2}" />
+    <geometry>
+     <mesh filename="package://boat/meshes/BoatHull.STL" scale="0.01 0.01 0.01"/>
     </geometry>
     </collision>
     <inertial>
@@ -32,6 +32,7 @@
 <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
 </inertial>
  </link>
+
 <joint name="hull_joint" type="fixed">
     <parent link="base_footprint"/>
     <child link="hull"/>
@@ -49,9 +50,9 @@
     </material>
  </visual>
     <collision>
-    <origin xyz="0 0 0" rpy="0 0 0" />
-     <geometry>
-       <mesh filename="package://boat/meshes/hullstl.STL" scale="0.001 0.001 0.001"/>
+    <origin xyz="0 0 0" rpy="${PI/2} 0 ${PI/2}" />
+    <geometry>
+     <mesh filename="package://boat/meshes/hullstl.STL" scale="0.01 0.01 0.01"/>
     </geometry>
     </collision>
     <inertial>
@@ -69,6 +70,7 @@
    <limit effort="30" velocity="1.0" lower="-32000" upper="32000" />
     <dynamics damping="0.1" friction="0.1" />
   </joint>
+
 <link name="prop_link">
   <visual>
     <origin xyz="0 0 0" rpy="${PI/2} 0 ${3*PI/2}" />
@@ -80,9 +82,9 @@
     </material>
  </visual>
     <collision>
-    <origin xyz="0 0 0" rpy="0 0 0" />
-     <geometry>
-       <mesh filename="package://boat/meshes/PropHousingCase1.STL" scale="0.001 0.001 0.001"/>
+    <origin xyz="0 0 0" rpy="${PI/2} 0 ${3*PI/2}" />
+    <geometry>
+     <mesh filename="package://boat/meshes/PropHousingCase1.STL" scale="0.01 0.01 0.01"/>
     </geometry>
     </collision>
     <inertial>
@@ -103,9 +105,9 @@
     </material>
  </visual>
     <collision>
-    <origin xyz="0 0 0" rpy="0 0 0" />
-     <geometry>
-       <mesh filename="package://boat/meshes/Servo Turning.STL" scale="0.001 0.001 0.001"/>
+    <origin xyz="1.43 0 0" rpy="${PI/2} 0 ${PI/2}" />
+    <geometry>
+     <mesh filename="package://boat/meshes/Servo Turning.STL" scale="0.01 0.01 0.01"/>
     </geometry>
     </collision>
     <inertial>
@@ -134,9 +136,9 @@
     </material>
  </visual>
     <collision>
-    <origin xyz="0 0 0" rpy="0 0 ${PI}" />
-     <geometry>
-       <mesh filename="package://boat/meshes/7297K180.STL" scale="0.001 0.001 0.001"/>
+    <origin xyz="0 -0.14 -0.14" rpy="0 0 ${PI/2}" />
+    <geometry>
+     <mesh filename="package://boat/meshes/7297K180.STL" scale="0.01 0.01 0.01"/>
     </geometry>
     </collision>
     <inertial>
@@ -166,9 +168,9 @@
     </material>
  </visual>
     <collision>
-    <origin xyz="0 0 0" rpy="0 0 0" />
-     <geometry>
-       <mesh filename="package://boat/meshes/Shaft.STL" scale="0.001 0.001 0.001"/>
+    <origin xyz="2.04 0.205 0" rpy="${PI/2} 0 ${PI/2+0.1}" />
+    <geometry>
+     <mesh filename="package://boat/meshes/Shaft.STL" scale="0.01 0.01 0.01"/>
     </geometry>
     </collision>
     <inertial>
@@ -198,9 +200,9 @@
     </material>
  </visual>
     <collision>
-    <origin xyz="0 0 0" rpy="0 0 0" />
-     <geometry>
-       <mesh filename="package://boat/meshes/PropPiece.STL" scale="0.001 0.001 0.001"/>
+    <origin xyz="2.04 0.195 1.155" rpy="${PI/2} 0 ${PI/2+0.1}" />
+    <geometry>
+     <mesh filename="package://boat/meshes/PropPiece.STL" scale="0.01 0.01 0.01"/>
     </geometry>
     </collision>
     <inertial>

@@ -189,7 +189,7 @@
 
 <link name="prop_piece">
   <visual>
-    <origin xyz="2.04 0.20 1.155" rpy="${PI/2} 0 ${PI/2+0.1}" />
+    <origin xyz="2.04 0.195 1.155" rpy="${PI/2} 0 ${PI/2+0.1}" />
     <geometry>
      <mesh filename="package://boat/meshes/PropPiece.STL" scale="0.01 0.01 0.01"/>
     </geometry>

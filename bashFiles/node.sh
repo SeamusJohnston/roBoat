@@ -1,3 +1,3 @@
 #!/bin/bash
 source ~/.bashrc
-rosrun boat imu_gazebo
+roslaunch boat node.launch

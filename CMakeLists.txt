@@ -124,12 +124,6 @@ include_directories(
 add_executable(remap nodes/remap.cpp)
 target_link_libraries(remap ${catkin_LIBRARIES})
 
-add_executable(imu_gazebo nodes/imu_gazebo.cpp)
-target_link_libraries(imu_gazebo ${catkin_LIBRARIES})
-
-add_executable(tfListener nodes/tfListener.cpp)
-target_link_libraries(tfListener ${catkin_LIBRARIES})
-
 add_executable(servo nodes/servo.cpp)
 target_link_libraries(servo ${catkin_LIBRARIES})
 
@@ -138,9 +132,6 @@ target_link_libraries(range_tf ${catkin_LIBRARIES})
 
 add_executable(prop nodes/prop.cpp)
 target_link_libraries(prop ${catkin_LIBRARIES})
-
-add_executable(odom nodes/odom.cpp)
-target_link_libraries(odom ${catkin_LIBRARIES})
 
 
 ## Declare a C++ library

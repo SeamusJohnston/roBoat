@@ -17,7 +17,7 @@ class SubscribeAndPublish
 
 		
 		//Subscriptions
-		sub2_= n2_.subscribe("/movement", 1000, &SubscribeAndPublish::callback, this);
+		sub2_= n2_.subscribe("/cmd_vel", 1000, &SubscribeAndPublish::callback, this);
 	}
 	
 	void callback(const geometry_msgs::Twist& data)

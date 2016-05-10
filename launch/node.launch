@@ -1,0 +1,22 @@
+<launch>
+
+  <node pkg="boat" type="prop" name="prop" output="screen">
+  </node>
+
+  <node pkg="boat" type="servo" name="servo" output="screen">
+  </node>
+
+  <node pkg="boat" type="remap" name="remap" output="screen">
+  </node>
+
+  <node pkg="razor_imu_9dof" type="imu_node.py" name="imu_node" output="screen">
+  </node>
+
+  <node pkg="boat" type="range_tf" name="range_tf" output="screen">
+  </node>
+
+  <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop_twist_keyboard" output="screen">
+  </node>
+
+
+</launch>
