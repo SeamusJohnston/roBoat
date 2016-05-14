@@ -163,7 +163,7 @@ pitch=0
 yaw=0
 seq=0
 accel_factor = 9.806 / 256.0    # sensor reports accel as 256.0 = 1G (9.8m/s^2). Convert to m/s^2.
-rospy.loginfo("Giving the razor IMU board 5 seconds to boot...")
+rospy.loginfo("Giving the IMU board 5 seconds to boot...")
 rospy.sleep(5) # Sleep for 5 seconds to wait for the board to boot
 
 
