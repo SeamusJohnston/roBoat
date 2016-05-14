@@ -11,7 +11,7 @@ class SubscribeAndPublish
 	SubscribeAndPublish()
 	{
 		//Publications
-		//controllers for rotating motor and spinning prop
+	
 		pub1_=n_.advertise<std_msgs::Float64>("/boat/prop_housing_controller/command",1000);
 
 		
